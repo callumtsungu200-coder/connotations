@@ -1,5 +1,7 @@
 # Quartets
 
+### ▶ [Play Quartets](https://callumtsungu200-coder.github.io/quartets/)
+
 An unlimited word-grouping puzzle game, inspired by the "find four groups of four" genre. Built with React and TypeScript, it runs entirely in the browser: no backend, accounts or external APIs.
 
 Sixteen words, four hidden categories, four mistakes allowed. When you finish, a fresh puzzle is dealt straight away, so you can keep playing for as long as you like.
@@ -112,6 +114,10 @@ puzzle(
 - no two puzzles with the same set of words
 
 The tests can't check meaning, so check that by hand: **each puzzle must have exactly one valid grouping.** Red herrings (a word that seems to fit two groups) are encouraged, as long as the other group already has four unambiguous members. For example, in puzzle `p008`, TANGO and FOXTROT are both NATO alphabet words, but they also have to complete the dance group, so the NATO group can only be HOTEL, VICTOR, OSCAR and JULIET.
+
+## Deploying to GitHub Pages
+
+Every push to `main` runs [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml), which runs the tests, builds the game and publishes it to <https://callumtsungu200-coder.github.io/quartets/>. The workflow sets `BASE_PATH` to the repository name so assets load from the Pages subpath.
 
 ## Deploying to Netlify
 
