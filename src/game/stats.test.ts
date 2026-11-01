@@ -10,6 +10,7 @@ import {
   winRate,
 } from './stats';
 import { pickNextPuzzle, pushHistory } from './picker';
+import { migrateLegacyKeys } from './storage';
 import type { Puzzle } from './types';
 
 describe('stats', () => {
@@ -52,10 +53,18 @@ describe('stats', () => {
     expect(loadStats()).toEqual(EMPTY_STATS);
   });
 
+  it('carries over stats saved under the old Quartets name', () => {
+    const s = recordGame(EMPTY_STATS, { won: true, mistakes: 2 });
+    localStorage.setItem('quartets:stats', JSON.stringify(s));
+    migrateLegacyKeys();
+    expect(loadStats()).toEqual(s);
+    expect(localStorage.getItem('quartets:stats')).toBeNull();
+  });
+
   it('falls back to empty stats when storage is corrupted', () => {
-    localStorage.setItem('quartets:stats', '{"played":"lots"}');
+    localStorage.setItem('connotations:stats', '{"played":"lots"}');
     expect(loadStats()).toEqual(EMPTY_STATS);
-    localStorage.setItem('quartets:stats', 'not json');
+    localStorage.setItem('connotations:stats', 'not json');
     expect(loadStats()).toEqual(EMPTY_STATS);
   });
 });

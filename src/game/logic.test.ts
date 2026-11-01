@@ -140,7 +140,7 @@ describe('guessing', () => {
       [0, 0, 0, 1],
       [0, 0, 0, 0],
     ]);
-    expect(shareText(puzzle, g, 7)).toBe('Quartets #7\n🟨🟨🟨🟩\n🟨🟨🟨🟨');
+    expect(shareText(puzzle, g, 7)).toBe('Connotations #7\n🟨🟨🟨🟩\n🟨🟨🟨🟨');
   });
 });
 

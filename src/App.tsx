@@ -55,7 +55,7 @@ export default function App() {
             <i className="level-2" />
             <i className="level-3" />
           </span>
-          <h1>Quartets</h1>
+          <h1>Connotations</h1>
         </div>
         <nav className="header-actions" aria-label="Game menu">
           <button type="button" className="icon-button" aria-label="How to play" onClick={() => setHelpOpen(true)}>

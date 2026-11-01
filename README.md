@@ -1,6 +1,6 @@
-# Quartets
+# Connotations
 
-### ▶ [Play Quartets](https://callumtsungu200-coder.github.io/quartets/)
+### ▶ [Play Connotations](https://callumtsungu200-coder.github.io/connotations/)
 
 An unlimited word-grouping puzzle game, inspired by the "find four groups of four" genre. Built with React and TypeScript, it runs entirely in the browser: no backend, accounts or external APIs.
 
@@ -117,7 +117,7 @@ The tests can't check meaning, so check that by hand: **each puzzle must have ex
 
 ## Deploying to GitHub Pages
 
-Every push to `main` runs [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml), which runs the tests, builds the game and publishes it to <https://callumtsungu200-coder.github.io/quartets/>. The workflow sets `BASE_PATH` to the repository name so assets load from the Pages subpath.
+Every push to `main` runs [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml), which runs the tests, builds the game and publishes it to <https://callumtsungu200-coder.github.io/connotations/>. The workflow sets `BASE_PATH` to the repository name so assets load from the Pages subpath.
 
 ## Deploying to Netlify
 
@@ -136,15 +136,15 @@ The build output in `dist/` is fully static, so any static host works too (GitHu
 
 ## Data and privacy
 
-Everything is stored in your browser's `localStorage` under keys prefixed `quartets:`:
+Everything is stored in your browser's `localStorage` under keys prefixed `connotations:`:
 
 | Key                  | Contents                                   |
 | -------------------- | ------------------------------------------ |
-| `quartets:stats`     | Your statistics                            |
-| `quartets:progress`  | The game in progress                       |
-| `quartets:history`   | Recently played puzzle ids                 |
-| `quartets:theme`     | Your light/dark preference                 |
-| `quartets:seen-help` | Whether the how-to-play guide has been shown |
+| `connotations:stats`     | Your statistics                            |
+| `connotations:progress`  | The game in progress                       |
+| `connotations:history`   | Recently played puzzle ids                 |
+| `connotations:theme`     | Your light/dark preference                 |
+| `connotations:seen-help` | Whether the how-to-play guide has been shown |
 
 Nothing is sent anywhere. If storage is unavailable (for example, in some private browsing modes), the game still works but nothing is saved between visits.
 

@@ -3,7 +3,22 @@
  * and blocked storage can throw on access, so every call is guarded and the
  * game keeps working (just without persistence).
  */
-const PREFIX = 'quartets:';
+const PREFIX = 'connotations:';
+/** The game was first released as "Quartets"; data saved under that name is carried over once. */
+const LEGACY_PREFIX = 'quartets:';
+
+export function migrateLegacyKeys(): void {
+  try {
+    for (const key of Object.keys(localStorage)) {
+      if (!key.startsWith(LEGACY_PREFIX)) continue;
+      const name = PREFIX + key.slice(LEGACY_PREFIX.length);
+      if (localStorage.getItem(name) == null) localStorage.setItem(name, localStorage.getItem(key)!);
+      localStorage.removeItem(key);
+    }
+  } catch {
+    /* storage unavailable — nothing to migrate */
+  }
+}
 
 export const KEYS = {
   stats: 'stats',

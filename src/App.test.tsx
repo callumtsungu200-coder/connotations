@@ -7,9 +7,9 @@ import { createGame } from './game/logic';
 const puzzle = PUZZLES[0];
 
 function startWith(p = puzzle) {
-  localStorage.setItem('quartets:seen-help', '1');
-  localStorage.setItem('quartets:progress', JSON.stringify(createGame(p)));
-  localStorage.setItem('quartets:history', JSON.stringify([p.id]));
+  localStorage.setItem('connotations:seen-help', '1');
+  localStorage.setItem('connotations:progress', JSON.stringify(createGame(p)));
+  localStorage.setItem('connotations:history', JSON.stringify([p.id]));
   return render(<App />);
 }
 
@@ -29,7 +29,7 @@ function submit() {
 }
 
 function storedStats() {
-  return JSON.parse(localStorage.getItem('quartets:stats') ?? 'null');
+  return JSON.parse(localStorage.getItem('connotations:stats') ?? 'null');
 }
 
 beforeEach(() => {
@@ -40,7 +40,7 @@ afterEach(() => {
   vi.useRealTimers();
 });
 
-describe('Quartets app', () => {
+describe('Connotations app', () => {
   it('shows the how-to-play guide on the first visit only', () => {
     const { unmount } = render(<App />);
     expect(screen.getByRole('dialog', { name: 'How to play' })).toBeInTheDocument();
@@ -193,7 +193,7 @@ describe('Quartets app', () => {
 
   it('resets statistics after confirmation', () => {
     localStorage.setItem(
-      'quartets:stats',
+      'connotations:stats',
       JSON.stringify({
         played: 3,
         won: 2,
@@ -210,7 +210,7 @@ describe('Quartets app', () => {
     expect(dialog).toHaveTextContent('67');
     fireEvent.click(within(dialog).getByRole('button', { name: 'Reset statistics' }));
     fireEvent.click(within(dialog).getByRole('button', { name: 'Yes, reset' }));
-    expect(localStorage.getItem('quartets:stats')).toBeNull();
+    expect(localStorage.getItem('connotations:stats')).toBeNull();
     expect(within(dialog).getAllByText('0').length).toBeGreaterThan(3);
   });
 
@@ -218,7 +218,7 @@ describe('Quartets app', () => {
     startWith();
     fireEvent.click(screen.getByRole('button', { name: 'Switch to dark mode' }));
     expect(document.documentElement.dataset.theme).toBe('dark');
-    expect(localStorage.getItem('quartets:theme')).toBe('dark');
+    expect(localStorage.getItem('connotations:theme')).toBe('dark');
     fireEvent.click(screen.getByRole('button', { name: 'Switch to light mode' }));
     expect(document.documentElement.dataset.theme).toBe('light');
   });

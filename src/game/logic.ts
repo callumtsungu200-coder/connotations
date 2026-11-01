@@ -137,7 +137,7 @@ const LEVEL_EMOJI = ['🟨', '🟩', '🟦', '🟪'] as const;
 
 export function shareText(puzzle: Puzzle, state: GameState, puzzleNo: number): string {
   const rows = guessGrid(puzzle, state).map((row) => row.map((l) => LEVEL_EMOJI[l]).join(''));
-  return [`Quartets #${puzzleNo}`, ...rows].join('\n');
+  return [`Connotations #${puzzleNo}`, ...rows].join('\n');
 }
 
 /** Checks that persisted state still matches the puzzle it claims to belong to. */
