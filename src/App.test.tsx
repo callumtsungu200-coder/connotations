@@ -128,7 +128,7 @@ describe('Connotations app', () => {
 
     fireEvent.click(within(dialog).getByRole('button', { name: 'Next puzzle' }));
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    expect(screen.getByText(/Puzzle #/)).not.toHaveTextContent('Puzzle #1');
+    expect(screen.getByText(/Puzzle #/)).not.toHaveTextContent(/^Puzzle #1$/);
     expect(within(screen.getByRole('group', { name: 'Word grid' })).getAllByRole('button')).toHaveLength(16);
   });
 
